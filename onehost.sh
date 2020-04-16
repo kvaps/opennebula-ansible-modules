@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 #args: <name> <im_mad> <vmm_mad> [template] [state] [cluster]
 set -e
 
@@ -56,7 +57,7 @@ if [ -z "$ID" ]; then
   # New host
   if OUTPUT="$(onehost create -i "$im_mad" -v "$vmm_mad" "$name")"; then
     ID="$(echo "$OUTPUT" | awk '{print $NF}' )"
-    onehost update "$ID" /tmp/onehost.conf
+    onehost update "$ID" "$CONFIG"
   else
     RC=$?; echo "$OUTPUT"; exit $RC
   fi
