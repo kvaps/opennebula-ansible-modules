@@ -58,7 +58,7 @@ fi
 
 if [ -z "$AR_ID" ]; then
   # New address range
-  onevnet addar "$ID" "$TEMPLATE"
+  onevnet addar "$ID" "$CONFIG"
   echo '{"changed":true}'
 else
   # Existing address range
